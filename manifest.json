@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Xhelios Daemon",
+  "version": "1.0.0",
+  "action": { "default_popup": "index.html" },
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content"]
+    }
+  ],
+  "background": {
+    "service_worker": "src/background"
+  }
+}
