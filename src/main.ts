@@ -1,1 +1,1 @@
-console.log("Daemon Active");
+console.log("Xhelios Daemon Active");

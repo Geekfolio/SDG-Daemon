@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Xhelios Daemon Example</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="urlInput"
+      placeholder="Enter a Event URL here"
+      style="width: 80%; padding: 5px"
+    />
+    <button onclick="auditUrl()">Audit URL</button>
+    <div id="result" style="margin-top: 10px"></div>
+
+    <script>
+      function auditUrl() {
+        const urlToAudit = document.getElementById("urlInput").value;
+        if (!urlToAudit) {
+          alert("Please enter a Event URL.");
+          return;
+        }
+
+        window.postMessage(
+          {
+            type: "AUDIT_REGISTRATION",
+            url: urlToAudit,
+          },
+          "*",
+        );
+      }
+
+      window.addEventListener("message", function (event) {
+        if (event.data.type === "AUDIT_RESULT") {
+          console.log(event.data);
+          document.getElementById("result").textContent =
+            "Audited Result: " + event.data.data.result;
+        }
+      });
+    </script>
+  </body>
+</html>
