@@ -1,9 +1,14 @@
 console.log("Xhelios Daemon Content Script Intitialized");
 
-window.addEventListener("message", function (event) {
-  if (event.data.type === "AUDIT_REGISTRATION") {
+interface EventData {
+  url: string;
+  type: string;
+}
+
+window.addEventListener("message", function (event: MessageEvent<EventData>) {
+  if (event.data.type === "AUDIT_REQUEST") {
     chrome.runtime.sendMessage({
-      action: "auditRegistration",
+      action: "auditRequest",
       url: event.data.url.trim(),
     });
   }

@@ -9,7 +9,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 });
 
 chrome.runtime.onMessage.addListener((request, sender, _sendResponse) => {
-  if (request.action === "auditRegistration") {
+  if (request.action === "auditRequest") {
     const sourceTabId = sender.tab?.id;
 
     chrome.tabs.create({ url: request.url }, (tab) => {
