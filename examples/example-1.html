@@ -34,7 +34,7 @@
         if (event.data.type === "AUDIT_RESULT") {
           console.log(event.data);
           document.getElementById("result").textContent =
-            "Audited Result: " + event.data.data.result;
+            "Audited Result: " + JSON.stringify(event.data.data.result);
         }
       });
     </script>
